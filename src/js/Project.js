@@ -1,5 +1,6 @@
 export default class Project {
   #isRemovable = true;
+  #isSelected = false;
 
   constructor(title) {
     this.title = title;
@@ -16,5 +17,13 @@ export default class Project {
 
   setRemovableState(option) {
     this.#isRemovable = option;
+  }
+
+  getSelectedState() {
+    return this.#isSelected;
+  }
+
+  setSelectedState(option) {
+    this.#isSelected = option;
   }
 }
