@@ -5,8 +5,7 @@ import pubSub from "./js/PubSub";
 import addProject from "./js/add-project";
 import addTodo from "./js/add-todo";
 import render from "./js/render";
-
-init();
+import projects from "./js/Projects";
 
 pubSub.subscribe("add-project", addProject);
 pubSub.subscribe("add-todo", addTodo);
@@ -36,3 +35,13 @@ $addTodoBtn.addEventListener("click", () => {
 
   pubSub.publish("render");
 });
+
+const $projects = document.getElementById("projects");
+$projects.addEventListener("click", (event) => {
+  const idx = [...$projects.children].indexOf(event.target);
+  projects.deselectAllProjects();
+  projects.projects[idx].setSelectedState(true);
+  pubSub.publish("render");
+});
+
+init();

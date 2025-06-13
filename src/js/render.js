@@ -1,24 +1,19 @@
 import projects from "./Projects";
+
 import { cleanCtn } from "./utils";
 
-export default function render() {
-  const $projects = document.getElementById("projects");
-  const $todos = document.getElementById("todos");
+const $projects = document.getElementById("projects");
+const $todos = document.getElementById("todos");
 
-  cleanCtn($projects);
-  cleanCtn($todos);
-
+function renderProjects() {
   for (const project of projects.projects) {
     const projectDiv = document.createElement("div");
-    const projectP = document.createElement("p");
+    // const projectP = document.createElement("p");
     projectDiv.id = "project";
-    projectP.textContent = project.title;
+    // projectP.textContent = project.title;
+    projectDiv.textContent = project.title;
 
-    if (project.getSelectedState()) {
-      projectP.style.color = "green";
-    }
-
-    projectDiv.appendChild(projectP);
+    // projectDiv.appendChild(projectP);
 
     if (project.getRemovableState()) {
       const projectSpan = document.createElement("span");
@@ -27,7 +22,11 @@ export default function render() {
     }
 
     $projects.appendChild(projectDiv);
+  }
+}
 
+function renderTodos() {
+  for (const project of projects.projects) {
     if (project.getSelectedState()) {
       const todos = project.todos;
 
@@ -50,7 +49,7 @@ export default function render() {
 
           switch (parseInt(todo.priority)) {
             case 0:
-              todoPrioritySpan.textContent = "High";
+              todoPrioritySpan.textContent = "Priority: High";
               break;
             case 1:
               todoPrioritySpan.textContent = "Normal";
@@ -74,4 +73,11 @@ export default function render() {
       }
     }
   }
+}
+
+export default function render() {
+  cleanCtn($todos);
+  cleanCtn($projects);
+  renderProjects();
+  renderTodos();
 }
