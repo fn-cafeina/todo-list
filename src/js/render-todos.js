@@ -31,13 +31,6 @@ const renderTodos = () => {
         id: "",
       });
 
-      const todoDescriptionP = createElement({
-        tagName: "p",
-        text: todo.description ? todo.description : "No description",
-        classes: [],
-        id: "",
-      });
-
       const todoPrioritySpan = createElement({
         tagName: "span",
         text: `Priority: ${getTodoPriority(todo.priority).priority}`,
@@ -52,12 +45,14 @@ const renderTodos = () => {
         id: "",
       });
 
-      todoDiv.append(
-        todoTitleP,
-        todoDescriptionP,
-        todoPrioritySpan,
-        todoDueDateSpan,
-      );
+      const todoSpanX = createElement({
+        tagName: "span",
+        text: "x",
+        classes: [],
+        id: "remove-todo-btn",
+      });
+
+      todoDiv.append(todoTitleP, todoPrioritySpan, todoDueDateSpan, todoSpanX);
 
       todosCtn.appendChild(todoDiv);
     },

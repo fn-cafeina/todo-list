@@ -7,7 +7,7 @@ class Projects {
     this.projects.push(project);
   }
 
-  deleteProject(index) {
+  removeProject(index) {
     this.projects.splice(index, 1);
   }
 

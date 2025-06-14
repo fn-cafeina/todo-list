@@ -11,6 +11,10 @@ export default class Project {
     this.todos.push(todo);
   }
 
+  removeTodo(index) {
+    this.todos.splice(index, 1);
+  }
+
   getRemovableState() {
     return this.#isRemovable;
   }

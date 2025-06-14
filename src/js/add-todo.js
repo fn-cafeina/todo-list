@@ -7,7 +7,6 @@ export default function addTodo(todoData) {
   if ((todoData.title, todoData.duedate)) {
     const newTodo = new Todo(
       todoData.title,
-      todoData.description,
       todoData.priority,
       todoData.duedate,
     );

@@ -17,12 +17,10 @@ const addProjectEvent = () => {
 };
 
 const addTodoEvent = () => {
-  const { todoTitle, todoDescription, todoPriority, todoDueDate } =
-    getTodoData();
+  const { todoTitle, todoPriority, todoDueDate } = getTodoData();
 
   pubSub.publish("add-todo", {
     title: todoTitle,
-    description: todoDescription,
     priority: todoPriority,
     duedate: todoDueDate,
   });
@@ -53,9 +51,24 @@ const removeProjectEvent = (event) => {
 
     const idx = [...projectsCtn.children].indexOf(pn);
 
-    projects.deleteProject(idx);
+    projects.removeProject(idx);
     projects.deselectAllProjects();
     projects.projects[0].setSelectedState(true);
+
+    pubSub.publish("render-projects");
+    pubSub.publish("render-todos");
+  }
+};
+
+const removeTodoEvent = (event) => {
+  const todosCtn = $("#l-todos");
+
+  if (event.target.id === "remove-todo-btn") {
+    const pn = event.target.parentNode;
+
+    const idx = [...todosCtn.children].indexOf(pn);
+
+    projects.projects[projects.getSelectedProjectIndex()].removeTodo(idx);
 
     pubSub.publish("render-projects");
     pubSub.publish("render-todos");
@@ -67,12 +80,15 @@ const initEvents = () => {
   const addTodoBtn = $("#add-todo-btn");
 
   const projectsCtn = $("#l-projects");
+  const todosCtn = $("#l-todos");
 
   addProjectBtn.addEventListener("click", addProjectEvent);
   addTodoBtn.addEventListener("click", addTodoEvent);
 
   projectsCtn.addEventListener("click", selectProjectEvent);
   projectsCtn.addEventListener("click", removeProjectEvent);
+
+  todosCtn.addEventListener("click", removeTodoEvent);
 };
 
 export default initEvents;
