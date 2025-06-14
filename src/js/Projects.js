@@ -20,8 +20,10 @@ class Projects {
   }
 
   deselectAllProjects() {
-    for (let i = 0; i < this.projects.length; i++) {
-      this.projects[i].setSelectedState(false);
+    if (this.projects.length) {
+      this.projects.forEach((project) => {
+        project.setSelectedState(false);
+      });
     }
   }
 }
