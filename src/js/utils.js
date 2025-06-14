@@ -1,7 +1,43 @@
-export function errorMsg(msg) {
+const errorMsg = (msg) => {
   alert(msg);
-}
+};
 
-export function cleanCtn(ctn) {
-  while (ctn.firstChild) ctn.removeChild(ctn.firstChild);
-}
+const cleanCtn = (ctn) => {
+  while (ctn.firstChild) {
+    ctn.removeChild(ctn.firstChild);
+  }
+};
+
+const $ = (el) => {
+  return document.querySelector(el);
+};
+
+const createElement = (element) => {
+  const { tagName, text, classes, id } = element;
+
+  const newElement = document.createElement(tagName);
+
+  if (id) {
+    newElement.id = id;
+  }
+
+  if (classes) {
+    newElement.classList.add(...classes);
+  }
+
+  if (text) {
+    newElement.textContent = text;
+  }
+
+  return newElement;
+};
+
+createElement({ tagName: "div" });
+
+const saveToLS = (itemName, item) => {
+  const strItem = JSON.stringify(item);
+
+  localStorage.setItem(itemName, strItem);
+};
+
+export { errorMsg, cleanCtn, $, saveToLS, createElement };

@@ -1,0 +1,11 @@
+.is-low {
+  background-color: grey;
+}
+
+.is-normal {
+  background-color: yellow;
+}
+
+.is-high {
+  background-color: red;
+}

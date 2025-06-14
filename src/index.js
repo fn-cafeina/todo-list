@@ -4,12 +4,14 @@ import init from "./js/init";
 import pubSub from "./js/PubSub";
 import addProject from "./js/add-project";
 import addTodo from "./js/add-todo";
-import render from "./js/render";
 import projects from "./js/Projects";
+import renderProjects from "./js/render-projects";
+import renderTodos from "./js/render-todos";
 
 pubSub.subscribe("add-project", addProject);
 pubSub.subscribe("add-todo", addTodo);
-pubSub.subscribe("render", render);
+pubSub.subscribe("render-projects", renderProjects);
+pubSub.subscribe("render-todos", renderTodos);
 
 const $addProjectBtn = document.getElementById("add-project-btn");
 $addProjectBtn.addEventListener("click", () => {
@@ -33,15 +35,19 @@ $addTodoBtn.addEventListener("click", () => {
     duedate: todoDueDate,
   });
 
-  pubSub.publish("render");
+  pubSub.publish("render-projects");
+  pubSub.publish("render-todos");
 });
 
-const $projects = document.getElementById("projects");
+const $projects = document.getElementById("l-projects");
 $projects.addEventListener("click", (event) => {
-  const idx = [...$projects.children].indexOf(event.target);
-  projects.deselectAllProjects();
-  projects.projects[idx].setSelectedState(true);
-  pubSub.publish("render");
+  if (event.target.id === "project") {
+    const idx = [...$projects.children].indexOf(event.target);
+    projects.deselectAllProjects();
+    projects.projects[idx].setSelectedState(true);
+    pubSub.publish("render-projects");
+    pubSub.publish("render-todos");
+  }
 });
 
 init();

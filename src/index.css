@@ -1,1 +1,8 @@
 @import "minireset.css";
+
+@import "css/layouts/projects.css";
+
+@import "css/modules/project.css";
+
+@import "css/states/project.css";
+@import "css/states/todo-priority.css";

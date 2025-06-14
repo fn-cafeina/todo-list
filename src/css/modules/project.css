@@ -1,0 +1,5 @@
+#project {
+  display: flex;
+  padding: 6px;
+  justify-content: space-between;
+}
