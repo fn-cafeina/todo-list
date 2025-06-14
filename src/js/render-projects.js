@@ -29,7 +29,7 @@ const renderProjects = () => {
         tagName: "span",
         text: "x",
         classes: [],
-        id: "",
+        id: "remove-project-btn",
       });
 
       projectDiv.appendChild(projectSpan);

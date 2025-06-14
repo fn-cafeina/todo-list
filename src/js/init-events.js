@@ -45,6 +45,23 @@ const selectProjectEvent = (event) => {
   }
 };
 
+const removeProjectEvent = (event) => {
+  const projectsCtn = $("#l-projects");
+
+  if (event.target.id === "remove-project-btn") {
+    const pn = event.target.parentNode;
+
+    const idx = [...projectsCtn.children].indexOf(pn);
+
+    projects.deleteProject(idx);
+    projects.deselectAllProjects();
+    projects.projects[0].setSelectedState(true);
+
+    pubSub.publish("render-projects");
+    pubSub.publish("render-todos");
+  }
+};
+
 const initEvents = () => {
   const addProjectBtn = $("#add-project-btn");
   const addTodoBtn = $("#add-todo-btn");
@@ -55,6 +72,7 @@ const initEvents = () => {
   addTodoBtn.addEventListener("click", addTodoEvent);
 
   projectsCtn.addEventListener("click", selectProjectEvent);
+  projectsCtn.addEventListener("click", removeProjectEvent);
 };
 
 export default initEvents;
