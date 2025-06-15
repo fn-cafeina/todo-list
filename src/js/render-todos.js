@@ -20,8 +20,8 @@ const renderTodos = () => {
       const todoDiv = createElement({
         tagName: "div",
         text: "",
-        classes: [],
-        id: "",
+        classes: todo.getCompletedState() ? ["is-completed"] : [],
+        id: "todo",
       });
 
       const todoTitleP = createElement({
@@ -45,6 +45,19 @@ const renderTodos = () => {
         id: "",
       });
 
+      const todoCheckbox = createElement({
+        tagName: "input",
+        text: "",
+        classes: [],
+        id: "todo-checkbox",
+      });
+
+      todoCheckbox.setAttribute("type", "checkbox");
+
+      if (todo.getCompletedState()) {
+        todoCheckbox.checked = true;
+      }
+
       const todoSpanX = createElement({
         tagName: "span",
         text: "x",
@@ -52,7 +65,13 @@ const renderTodos = () => {
         id: "remove-todo-btn",
       });
 
-      todoDiv.append(todoTitleP, todoPrioritySpan, todoDueDateSpan, todoSpanX);
+      todoDiv.append(
+        todoCheckbox,
+        todoTitleP,
+        todoPrioritySpan,
+        todoDueDateSpan,
+        todoSpanX,
+      );
 
       todosCtn.appendChild(todoDiv);
     },

@@ -4,7 +4,7 @@ import Todo from "./Todo";
 import { errorMsg } from "./utils";
 
 export default function addTodo(todoData) {
-  if ((todoData.title, todoData.duedate)) {
+  if (todoData.title && todoData.duedate) {
     const newTodo = new Todo(
       todoData.title,
       todoData.priority,

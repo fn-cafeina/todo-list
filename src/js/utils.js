@@ -34,10 +34,4 @@ const createElement = (element) => {
 
 createElement({ tagName: "div" });
 
-const saveToLS = (itemName, item) => {
-  const strItem = JSON.stringify(item);
-
-  localStorage.setItem(itemName, strItem);
-};
-
-export { errorMsg, cleanCtn, $, saveToLS, createElement };
+export { errorMsg, cleanCtn, $, createElement };

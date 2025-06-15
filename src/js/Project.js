@@ -1,10 +1,9 @@
 export default class Project {
-  #isRemovable = true;
-  #isSelected = false;
-
   constructor(title) {
     this.title = title;
     this.todos = [];
+    this.isSelected = false;
+    this.isRemovable = true;
   }
 
   addTodo(todo) {
@@ -16,18 +15,18 @@ export default class Project {
   }
 
   getRemovableState() {
-    return this.#isRemovable;
+    return this.isRemovable;
   }
 
   setRemovableState(option) {
-    this.#isRemovable = option;
+    this.isRemovable = option;
   }
 
   getSelectedState() {
-    return this.#isSelected;
+    return this.isSelected;
   }
 
   setSelectedState(option) {
-    this.#isSelected = option;
+    this.isSelected = option;
   }
 }

@@ -9,3 +9,7 @@
 .is-high {
   background-color: red;
 }
+
+.is-completed {
+  opacity: 0.8;
+}

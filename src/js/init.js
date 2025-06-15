@@ -8,17 +8,25 @@ import renderProjects from "./render-projects";
 import initEvents from "./init-events";
 import initSubscribers from "./init-subscribers";
 
+import { getProjectsFromLocalStorage } from "./local-storage";
+
 export default function init() {
-  const defaultProject = new Project("Default");
+  if (localStorage.getItem("projects") !== null) {
+    getProjectsFromLocalStorage();
+  } else {
+    const defaultProject = new Project("Default");
 
-  defaultProject.setRemovableState(false);
-  defaultProject.setSelectedState(true);
+    defaultProject.setRemovableState(false);
+    defaultProject.setSelectedState(true);
 
-  projects.addProject(defaultProject);
+    projects.addProject(defaultProject);
+  }
 
   initEvents();
   initSubscribers();
 
   renderProjects();
   renderTodos();
+
+  getProjectsFromLocalStorage();
 }

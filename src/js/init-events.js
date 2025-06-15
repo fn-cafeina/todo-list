@@ -2,6 +2,8 @@ import pubSub from "./PubSub";
 
 import projects from "./Projects";
 
+import { saveProjectsToLocalStorage } from "./local-storage";
+
 import getProjectData from "./get-project-data";
 import getTodoData from "./get-todo-data";
 
@@ -14,6 +16,8 @@ const addProjectEvent = () => {
 
   pubSub.publish("render-projects");
   pubSub.publish("render-todos");
+
+  saveProjectsToLocalStorage();
 };
 
 const addTodoEvent = () => {
@@ -27,6 +31,8 @@ const addTodoEvent = () => {
 
   pubSub.publish("render-projects");
   pubSub.publish("render-todos");
+
+  saveProjectsToLocalStorage();
 };
 
 const selectProjectEvent = (event) => {
@@ -58,6 +64,8 @@ const removeProjectEvent = (event) => {
     pubSub.publish("render-projects");
     pubSub.publish("render-todos");
   }
+
+  saveProjectsToLocalStorage();
 };
 
 const removeTodoEvent = (event) => {
@@ -73,6 +81,27 @@ const removeTodoEvent = (event) => {
     pubSub.publish("render-projects");
     pubSub.publish("render-todos");
   }
+
+  saveProjectsToLocalStorage();
+};
+
+const markTodoComplete = (event) => {
+  const todosCtn = $("#l-todos");
+
+  if (event.target.id === "todo-checkbox") {
+    const pn = event.target.parentNode;
+
+    const idx = [...todosCtn.children].indexOf(pn);
+
+    projects.projects[projects.getSelectedProjectIndex()].todos[
+      idx
+    ].toggleCompletedState();
+
+    pubSub.publish("render-projects");
+    pubSub.publish("render-todos");
+  }
+
+  saveProjectsToLocalStorage();
 };
 
 const initEvents = () => {
@@ -89,6 +118,7 @@ const initEvents = () => {
   projectsCtn.addEventListener("click", removeProjectEvent);
 
   todosCtn.addEventListener("click", removeTodoEvent);
+  todosCtn.addEventListener("click", markTodoComplete);
 };
 
 export default initEvents;

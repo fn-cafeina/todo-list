@@ -11,6 +11,10 @@ class Projects {
     this.projects.splice(index, 1);
   }
 
+  removeAllProjects() {
+    this.projects = [];
+  }
+
   getSelectedProjectIndex() {
     for (let i = 0; i < this.projects.length; i++) {
       if (this.projects[i].getSelectedState()) {
