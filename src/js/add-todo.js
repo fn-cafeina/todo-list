@@ -1,6 +1,8 @@
 import projects from "./Projects";
 import Todo from "./Todo";
 
+import pubSub from "./PubSub";
+
 import { errorMsg } from "./utils";
 
 const addTodo = (todoData) => {
@@ -12,6 +14,8 @@ const addTodo = (todoData) => {
     );
 
     projects.projects[projects.getSelectedProjectIndex()].addTodo(newTodo);
+
+    pubSub.publish("close-todo-dialog");
   } else errorMsg("Please enter a valid todo data.");
 };
 

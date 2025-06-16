@@ -16,7 +16,6 @@ const addProjectEvent = () => {
 
   pubSub.publish("render-projects");
   pubSub.publish("render-todos");
-  pubSub.publish("close-project-dialog");
 
   saveProjectsToLocalStorage();
 };
@@ -32,7 +31,6 @@ const addTodoEvent = () => {
 
   pubSub.publish("render-projects");
   pubSub.publish("render-todos");
-  pubSub.publish("close-todo-dialog");
 
   saveProjectsToLocalStorage();
 };
