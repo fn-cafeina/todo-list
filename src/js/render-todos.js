@@ -11,7 +11,7 @@ const getTodoPriority = (priority) => {
 };
 
 const renderTodos = () => {
-  const todosCtn = $("#l-todos");
+  const todosCtn = $("#todos");
 
   cleanCtn(todosCtn);
 

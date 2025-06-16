@@ -1,13 +1,13 @@
 .is-low {
-  background-color: grey;
+  background-color: #5e5c5ca8;
 }
 
 .is-normal {
-  background-color: yellow;
+  background-color: rgba(148, 148, 29, 0.733);
 }
 
 .is-high {
-  background-color: red;
+  background-color: rgba(189, 16, 16, 0.541);
 }
 
 .is-completed {

@@ -16,6 +16,7 @@ const addProjectEvent = () => {
 
   pubSub.publish("render-projects");
   pubSub.publish("render-todos");
+  pubSub.publish("close-project-dialog");
 
   saveProjectsToLocalStorage();
 };
@@ -31,12 +32,13 @@ const addTodoEvent = () => {
 
   pubSub.publish("render-projects");
   pubSub.publish("render-todos");
+  pubSub.publish("close-todo-dialog");
 
   saveProjectsToLocalStorage();
 };
 
 const selectProjectEvent = (event) => {
-  const projectsCtn = $("#l-projects");
+  const projectsCtn = $("#projects");
 
   if (event.target.id === "project") {
     const idx = [...projectsCtn.children].indexOf(event.target);
@@ -50,7 +52,7 @@ const selectProjectEvent = (event) => {
 };
 
 const removeProjectEvent = (event) => {
-  const projectsCtn = $("#l-projects");
+  const projectsCtn = $("#projects");
 
   if (event.target.id === "remove-project-btn") {
     const pn = event.target.parentNode;
@@ -69,7 +71,7 @@ const removeProjectEvent = (event) => {
 };
 
 const removeTodoEvent = (event) => {
-  const todosCtn = $("#l-todos");
+  const todosCtn = $("#todos");
 
   if (event.target.id === "remove-todo-btn") {
     const pn = event.target.parentNode;
@@ -86,7 +88,7 @@ const removeTodoEvent = (event) => {
 };
 
 const markTodoComplete = (event) => {
-  const todosCtn = $("#l-todos");
+  const todosCtn = $("#todos");
 
   if (event.target.id === "todo-checkbox") {
     const pn = event.target.parentNode;
@@ -108,8 +110,8 @@ const initEvents = () => {
   const addProjectBtn = $("#add-project-btn");
   const addTodoBtn = $("#add-todo-btn");
 
-  const projectsCtn = $("#l-projects");
-  const todosCtn = $("#l-todos");
+  const projectsCtn = $("#projects");
+  const todosCtn = $("#todos");
 
   addProjectBtn.addEventListener("click", addProjectEvent);
   addTodoBtn.addEventListener("click", addTodoEvent);
@@ -119,6 +121,22 @@ const initEvents = () => {
 
   todosCtn.addEventListener("click", removeTodoEvent);
   todosCtn.addEventListener("click", markTodoComplete);
+
+  $("#sidebar-add-project-btn").addEventListener("click", () => {
+    pubSub.publish("show-project-dialog");
+  });
+
+  $("#add-project-btn-cancel").addEventListener("click", () => {
+    pubSub.publish("close-project-dialog");
+  });
+
+  $("#main-add-todo-btn").addEventListener("click", () => {
+    pubSub.publish("show-todo-dialog");
+  });
+
+  $("#add-todo-btn-cancel").addEventListener("click", () => {
+    pubSub.publish("close-todo-dialog");
+  });
 };
 
 export default initEvents;

@@ -1,8 +1,17 @@
 @import "minireset.css";
 
+@import "./css/base/base.css";
+@import "./css/base/variables.css";
+
+@import "css/layouts/sidebar.css";
 @import "css/layouts/projects.css";
+@import "css/layouts/todos.css";
+@import "css/layouts/main.css";
 
 @import "css/modules/project.css";
+@import "css/modules/logo-icon.css";
+@import "css/modules/button.css";
+@import "css/modules/todo.css";
 
 @import "css/states/project.css";
 @import "css/states/todo.css";

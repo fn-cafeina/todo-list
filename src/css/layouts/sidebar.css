@@ -1,0 +1,13 @@
+#l-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: var(--fg);
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px;
+  user-select: none;
+  font-weight: 600;
+}

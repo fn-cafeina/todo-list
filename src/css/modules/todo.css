@@ -1,0 +1,10 @@
+#todo {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(73, 72, 72, 0.493);
+  padding: 8px;
+  font-weight: 600;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}

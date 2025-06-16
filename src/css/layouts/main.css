@@ -1,0 +1,8 @@
+#l-main {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  color: var(--text);
+  user-select: none;
+  gap: 20px;
+}

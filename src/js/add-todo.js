@@ -3,7 +3,7 @@ import Todo from "./Todo";
 
 import { errorMsg } from "./utils";
 
-export default function addTodo(todoData) {
+const addTodo = (todoData) => {
   if (todoData.title && todoData.duedate) {
     const newTodo = new Todo(
       todoData.title,
@@ -13,4 +13,6 @@ export default function addTodo(todoData) {
 
     projects.projects[projects.getSelectedProjectIndex()].addTodo(newTodo);
   } else errorMsg("Please enter a valid todo data.");
-}
+};
+
+export default addTodo;

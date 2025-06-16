@@ -3,7 +3,7 @@ import projects from "./Projects";
 import { cleanCtn, createElement, $ } from "./utils";
 
 const renderProjects = () => {
-  const projectsCtn = $("#l-projects");
+  const projectsCtn = $("#projects");
 
   cleanCtn(projectsCtn);
 

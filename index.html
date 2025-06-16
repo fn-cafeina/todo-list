@@ -6,37 +6,69 @@
     <title>Todo List</title>
   </head>
   <body>
-    <form>
-      <div>
-        <label for="project-title">Project title:</label>
-        <input type="text" id="project-title" />
+    <div id="l-sidebar">
+      <div class="logo-icon">
+        <img src="assets/icons/logo-icon.svg" alt="Logo Icon" />
+        <p>Todo List</p>
       </div>
-      <div>
-        <button type="button" id="add-project-btn">Add project</button>
+      <hr />
+      <div id="l-projects">
+        <p>Projects</p>
+        <div id="projects"></div>
       </div>
-    </form>
-    <div id="l-projects"></div>
-    <form>
-      <div>
-        <label for="todo-title">Todo title:</label>
-        <input type="text" id="todo-title" />
+      <button type="button" id="sidebar-add-project-btn" class="button">
+        Add project
+      </button>
+    </div>
+    <div id="l-main">
+      <div id="l-todos">
+        <div id="todos"></div>
       </div>
-      <div>
-        <label for="todo-priority">Todo priority:</label>
-        <select id="todo-priority">
-          <option value="0">High</option>
-          <option value="1" selected>Normal</option>
-          <option value="2">Low</option>
-        </select>
-      </div>
-      <div>
-        <label for="todo-duedate">Todo duedate</label>
-        <input type="date" id="todo-duedate" />
-      </div>
-      <div>
-        <button type="button" id="add-todo-btn">Add todo</button>
-      </div>
-    </form>
-    <div id="l-todos"></div>
+      <button type="button" id="main-add-todo-btn" class="button">
+        Add todo
+      </button>
+    </div>
+    <dialog id="project-dialog">
+      <form>
+        <div>
+          <label for="project-title">Project title:</label>
+          <input type="text" id="project-title" />
+        </div>
+        <div>
+          <button type="button" id="add-project-btn" class="button">
+            Accept
+          </button>
+          <button type="button" id="add-project-btn-cancel" class="button">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="todo-dialog">
+      <form>
+        <div>
+          <label for="todo-title">Todo title:</label>
+          <input type="text" id="todo-title" />
+        </div>
+        <div>
+          <label for="todo-priority">Todo priority:</label>
+          <select id="todo-priority">
+            <option value="0">High</option>
+            <option value="1" selected>Normal</option>
+            <option value="2">Low</option>
+          </select>
+        </div>
+        <div>
+          <label for="todo-duedate">Todo duedate:</label>
+          <input type="date" id="todo-duedate" />
+        </div>
+        <div>
+          <button type="button" id="add-todo-btn" class="button">Accept</button>
+          <button type="button" id="add-todo-btn-cancel" class="button">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </dialog>
   </body>
 </html>
